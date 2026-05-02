@@ -16,9 +16,44 @@ permissions:
   actions: write
 
 jobs:
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+
+    outputs:
+      compile: ${{ steps.changed-files.outputs.compile_any_changed }}
+
+    steps:
+      - name: Checkout
+        if: github.event_name != 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect compile inputs
+        if: github.event_name != 'workflow_dispatch'
+        id: changed-files
+        uses: step-security/changed-files@v46
+        with:
+          since_last_remote_commit: true
+          files_yaml: |
+            compile:
+              - .github/workflows/windows-compile.yml
+              - .gitmodules
+              - CMakeLists.txt
+              - CMakePresets.json
+              - vcpkg.json
+              - vcpkg-configuration.json
+              - cmake/**
+              - Engine/**
+              - Samples/**
+              - extern/**
+
   compile:
     name: Windows
     runs-on: windows-latest
+    needs: changes
+    if: github.event_name == 'workflow_dispatch' || needs.changes.outputs.compile == 'true'
 
     env:
       VCPKG_BINARY_SOURCES: clear;x-gha,readwrite
