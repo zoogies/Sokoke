@@ -2,9 +2,11 @@
 
 #include <Sokoke/Core/Sokoke.hpp>
 
+namespace sk = sokoke;
+
 int main()
 {
-    sokoke::SokokeEngine engine;
+    sk::SokokeEngine engine;
 
     engine.Initialize();
     engine.Tick();

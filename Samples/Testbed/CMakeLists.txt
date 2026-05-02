@@ -5,4 +5,5 @@ add_executable(testbed
 target_link_libraries(testbed
     PRIVATE
         sokoke::engine
+        sokoke::backend::sdl
 )

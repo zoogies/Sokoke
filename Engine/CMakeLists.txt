@@ -1,4 +1,5 @@
 add_subdirectory(Core)
+add_subdirectory(Backends)
 
 add_library(sokoke_engine INTERFACE)
 add_library(sokoke::engine ALIAS sokoke_engine)
