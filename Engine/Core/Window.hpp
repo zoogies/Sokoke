@@ -1,5 +1,7 @@
+#pragma once
+
 #include <string>
-#include <Sokoke/Core/Types.hpp>
+#include <Core/Types.hpp>
 
 namespace sokoke {
 

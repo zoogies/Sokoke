@@ -11,14 +11,14 @@ target_sources(backend_sdl
         Window.hpp
 )
 
-target_include_directories(backend_sdl
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
 target_link_libraries(backend_sdl
     PUBLIC
         sokoke::core
     PRIVATE
         SDL3::SDL3
+)
+
+target_include_directories(backend_sdl
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )

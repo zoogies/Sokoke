@@ -1,4 +1,4 @@
-#include <Sokoke/Core/Sokoke.hpp>
+#include <Core/Sokoke.hpp>
 
 #include <iostream>
 

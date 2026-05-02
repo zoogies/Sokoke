@@ -1,6 +1,6 @@
 #include <SDL3/SDL.h>
 
-#include <Sokoke/Backends/SDL/Window.hpp>
+#include <Backends/SDL/Window.hpp>
 
 namespace sokoke::backends::sdl {
 

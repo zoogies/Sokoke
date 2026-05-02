@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <Sokoke/Core/Sokoke.hpp>
+#include <Core/Sokoke.hpp>
 
 namespace sk = sokoke;
 

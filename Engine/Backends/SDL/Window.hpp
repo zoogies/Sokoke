@@ -1,4 +1,6 @@
-#include <Sokoke/Core/Window.hpp>
+#pragma once
+
+#include <Core/Window.hpp>
 
 struct SDL_Window; // fwd
 

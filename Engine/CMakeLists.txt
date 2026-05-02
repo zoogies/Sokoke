@@ -8,3 +8,8 @@ target_link_libraries(sokoke_engine
     INTERFACE
         sokoke::core
 )
+
+target_include_directories(sokoke_core
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
