@@ -5,15 +5,15 @@ add_library(sokoke::backend::sdl ALIAS backend_sdl)
 
 target_sources(backend_sdl
     PRIVATE
-        src/Window.cpp
+        Window.cpp
 
     PUBLIC
-        include/Sokoke/Backends/SDL/Window.hpp
+        Window.hpp
 )
 
 target_include_directories(backend_sdl
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_link_libraries(backend_sdl
