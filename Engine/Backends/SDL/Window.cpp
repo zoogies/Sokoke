@@ -30,6 +30,7 @@ void SDLWindow::Create(const WindowDesc& desc)
     }
 
     window = SDL_CreateWindow(desc.title.c_str(), desc.width, desc.height, flags);
+    id = SDL_GetWindowID(window);
 }
 
 }

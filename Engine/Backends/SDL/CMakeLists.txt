@@ -6,9 +6,13 @@ add_library(sokoke::backend::sdl ALIAS backend_sdl)
 target_sources(backend_sdl
     PRIVATE
         Window.cpp
+        Events.cpp
+        SDL.cpp
 
     PUBLIC
         Window.hpp
+        Events.hpp
+        SDL.hpp
 )
 
 target_link_libraries(backend_sdl

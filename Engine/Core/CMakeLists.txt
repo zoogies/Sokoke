@@ -7,6 +7,7 @@ target_sources(sokoke_core
 
     PUBLIC
         Sokoke.hpp
+        PlatformEvents.hpp
 )
 
 target_compile_features(sokoke_core
