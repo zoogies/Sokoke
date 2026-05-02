@@ -26,8 +26,3 @@ target_include_directories(backend_sdl
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
-
-# avoids PDB contention
-if (MSVC)
-    target_compile_options(backend_sdl PRIVATE /FS)
-endif()
