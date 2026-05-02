@@ -1,0 +1,61 @@
+name: Windows Compile
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: windows-compile-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  compile:
+    name: Windows
+    runs-on: windows-latest
+
+    env:
+      VCPKG_BINARY_SOURCES: clear;x-gha,readwrite
+      SCCACHE_GHA_ENABLED: "true"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Prepare MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Set up sccache
+        uses: mozilla-actions/sccache-action@v0.0.6
+
+      - name: Cache vcpkg downloads
+        uses: actions/cache@v4
+        with:
+          path: extern/vcpkg/downloads
+          key: vcpkg-downloads-windows-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', '.gitmodules') }}
+          restore-keys: |
+            vcpkg-downloads-windows-
+
+      - name: Bootstrap vcpkg
+        run: extern\vcpkg\bootstrap-vcpkg.bat -disableMetrics
+
+      - name: Configure
+        run: >
+          cmake --preset default
+          -D CMAKE_C_COMPILER_LAUNCHER=sccache
+          -D CMAKE_CXX_COMPILER_LAUNCHER=sccache
+
+      - name: Build all targets
+        run: cmake --build --preset default --parallel
+
+      - name: sccache stats
+        if: always()
+        run: sccache --show-stats

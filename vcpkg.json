@@ -1,0 +1,7 @@
+{
+    "name": "sokoke",
+    "version": "0.0.0",
+    "dependencies": [
+        "sdl3"
+    ]
+}
