@@ -19,6 +19,17 @@ void SokokeEngine::Initialize(IPlatformBackend *backend) {
     eventRouter.Register([this](const PlatformEvent& event) {
         return HandlePlatformEvent(event);
     });
+    
+    // https://ascii.co.uk/art/owl
+    constexpr const char *startupArt = R"(
+ ,     ,
+ )\___/(
+{(@)v(@)}        Welcome.
+ {|~~~|}
+ {/^^^\}
+  `m-m`)";
+
+    SK_INFO("{}", startupArt);
 }
 
 void SokokeEngine::Tick() {

@@ -1,5 +1,6 @@
 #include <SDL3/SDL.h>
 
+#include <Core/Log.hpp>
 #include <Backends/SDL/Window.hpp>
 
 namespace sokoke::backends::sdl {
@@ -7,6 +8,7 @@ namespace sokoke::backends::sdl {
 SDLWindow::~SDLWindow()
 {
     if (window) {
+        SK_INFO("Destroying window (ID: {})", id);
         SDL_DestroyWindow(window);
         window = nullptr;
     }

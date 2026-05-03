@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Testbed",
+            "label": "Build Editor",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -10,7 +10,7 @@
                 "--preset",
                 "default",
                 "--target",
-                "testbed"
+                "sokoke_editor"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

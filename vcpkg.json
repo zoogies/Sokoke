@@ -5,6 +5,13 @@
         "sdl3",
         "entt",
         "glm",
-        "spdlog"
+        "spdlog",
+        {
+            "name": "imgui",
+            "features": [
+                "docking-experimental",
+                "sdl3-binding"
+            ]
+        }
     ]
 }

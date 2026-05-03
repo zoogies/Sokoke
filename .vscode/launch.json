@@ -2,24 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Testbed",
+            "name": "Debug Editor",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/default/Samples/Testbed/testbed.exe",
+            "program": "${workspaceFolder}/build/default/Editor/sokoke_editor.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "preLaunchTask": "Build Testbed"
+            "preLaunchTask": "Build Editor"
         },
         {
-            "name": "Run Testbed",
+            "name": "Run Editor",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/default/Samples/Testbed/testbed.exe",
+            "program": "${workspaceFolder}/build/default/Editor/sokoke_editor.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "preLaunchTask": "Build Testbed",
+            "preLaunchTask": "Build Editor",
             "noDebug": true
         }
     ]
