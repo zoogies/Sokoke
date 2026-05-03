@@ -2,6 +2,7 @@
 #include <type_traits>
 
 #include <Core/Log.hpp>
+#include <Core/Style.hpp>
 #include <Core/Sokoke.hpp>
 
 using namespace std;
@@ -12,11 +13,12 @@ void SokokeEngine::Initialize(IPlatformBackend *backend, IGPUBackend *gpu_backen
     SK_INFO("Initializing Sokoke Engine...");
 
     running = true;
-
     this->backend = backend;
     this->gpu_backend = gpu_backend;
     backend->CreateWindow({1280, 720, WindowMode::Windowed, "Sokoke Engine"});
     gpu_backend->CreateAndBind(); // pass window ID here to cleanup? TODO
+
+    ApplyAMOLEDTheme();
 
     eventRouter.Register([this](const PlatformEvent& event) {
         return HandlePlatformEvent(event);

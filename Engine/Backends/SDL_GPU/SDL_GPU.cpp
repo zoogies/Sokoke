@@ -52,6 +52,9 @@ bool SDL_GPUBackend::CreateAndBind() {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.IniFilename = NULL; // TODO: until we have VFS, dont use ini
+    
+    // docking
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -95,6 +98,7 @@ bool SDL_GPUBackend::CreateAndBind() {
     ImGui_ImplSDLGPU3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
+    ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
     return true;
 }
@@ -118,7 +122,7 @@ void SDL_GPUBackend::RenderImgui() {
         // Setup and start a render pass
         SDL_GPUColorTargetInfo target_info = {};
         target_info.texture = swapchain_texture;
-        target_info.clear_color = SDL_FColor { 0.45f, 0.55f, 0.60f, 1.00f };
+        target_info.clear_color = SDL_FColor { 0.00f, 0.00f, 0.00f, 1.00f };
         target_info.load_op = SDL_GPU_LOADOP_CLEAR;
         target_info.store_op = SDL_GPU_STOREOP_STORE;
         target_info.mip_level = 0;
@@ -139,6 +143,7 @@ void SDL_GPUBackend::RenderImgui() {
     ImGui_ImplSDLGPU3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
+    ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 }
 
 void SDL_GPUBackend::TryShutdown() {
