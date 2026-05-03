@@ -15,7 +15,7 @@ void SokokeEngine::Initialize(IPlatformBackend *backend, IGPUBackend *gpu_backen
     running = true;
     this->backend = backend;
     this->gpu_backend = gpu_backend;
-    backend->CreateWindow({1280, 720, WindowMode::Windowed, "Sokoke Engine"});
+    backend->CreateWindow({1920, 1080, WindowMode::Windowed, "Sokoke Engine"});
     gpu_backend->CreateAndBind(); // pass window ID here to cleanup? TODO
 
     ApplyAMOLEDTheme();
