@@ -1,14 +1,15 @@
-#include <Core/Sokoke.hpp>
-
 #include <iostream>
 #include <type_traits>
+
+#include <Core/Log.hpp>
+#include <Core/Sokoke.hpp>
 
 using namespace std;
 
 namespace sokoke {
 
 void SokokeEngine::Initialize(IPlatformBackend *backend) {
-    std::cout << "Initializing Sokoke Engine..." << std::endl;
+    SK_INFO("Initializing Sokoke Engine...");
 
     running = true;
 
@@ -32,7 +33,7 @@ void SokokeEngine::Tick() {
 }
 
 void SokokeEngine::Shutdown() {
-    std::cout << "Shutting down Sokoke Engine..." << std::endl;
+    SK_INFO("Shutting down Sokoke Engine...");
     running = false;
 }
 
