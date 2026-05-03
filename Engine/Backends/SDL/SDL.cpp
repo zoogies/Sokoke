@@ -39,4 +39,9 @@ TicksMS SDLBackend::GetTicks()
     return SDL_GetTicks();
 }
 
+void SDLBackend::AddEventSink(ISDLEventSink* sink)
+{
+    eventPump.AddEventSink(sink);
+}
+
 }

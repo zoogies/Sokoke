@@ -10,7 +10,8 @@
             "name": "imgui",
             "features": [
                 "docking-experimental",
-                "sdl3-binding"
+                "sdl3-binding",
+                "sdlgpu3-binding"
             ]
         }
     ]

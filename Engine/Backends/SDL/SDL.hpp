@@ -4,8 +4,9 @@
 #include <memory>
 #include <vector>
 
-#include <Core/IBackend.hpp>
+#include <Core/Backend/IBackend.hpp>
 #include <Backends/SDL/Events.hpp>
+#include <Backends/SDL/ISDLEventSink.hpp>
 #include <Backends/SDL/Window.hpp>
 
 namespace sokoke::backends::sdl {
@@ -18,6 +19,7 @@ public:
     SDLWindow& CreateWindow(const WindowDesc& desc) override;
     SDLEventPump& Events() override;
     TicksMS GetTicks() override;
+    void AddEventSink(ISDLEventSink* sink);
 
 private:
     SDLEventPump eventPump;

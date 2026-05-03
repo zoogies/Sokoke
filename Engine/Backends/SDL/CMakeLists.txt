@@ -12,13 +12,13 @@ target_sources(backend_sdl
     PUBLIC
         Window.hpp
         Events.hpp
+        ISDLEventSink.hpp
         SDL.hpp
 )
 
 target_link_libraries(backend_sdl
     PUBLIC
         sokoke::core
-    PRIVATE
         SDL3::SDL3
 )
 

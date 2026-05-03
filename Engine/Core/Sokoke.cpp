@@ -8,13 +8,15 @@ using namespace std;
 
 namespace sokoke {
 
-void SokokeEngine::Initialize(IPlatformBackend *backend) {
+void SokokeEngine::Initialize(IPlatformBackend *backend, IGPUBackend *gpu_backend) {
     SK_INFO("Initializing Sokoke Engine...");
 
     running = true;
 
     this->backend = backend;
+    this->gpu_backend = gpu_backend;
     backend->CreateWindow({1280, 720, WindowMode::Windowed, "Sokoke Engine"});
+    gpu_backend->CreateAndBind(); // pass window ID here to cleanup? TODO
 
     eventRouter.Register([this](const PlatformEvent& event) {
         return HandlePlatformEvent(event);
@@ -41,11 +43,15 @@ void SokokeEngine::Tick() {
 
     eventRouter.Dispatch();
     commandQueue.Flush(*this);
+
+    gpu_backend->RenderImgui();
 }
 
 void SokokeEngine::Shutdown() {
     SK_INFO("Shutting down Sokoke Engine...");
     running = false;
+    
+    gpu_backend->TryShutdown();
 }
 
 void SokokeEngine::Execute(const QuitCommand&) {

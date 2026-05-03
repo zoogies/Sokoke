@@ -9,6 +9,12 @@ std::vector<PlatformEvent> SDLEventPump::PollEvents() {
 
     SDL_Event sdlEvent;
     while (SDL_PollEvent(&sdlEvent)) {
+        for (auto* sink : eventSinks) {
+            if (sink != nullptr) {
+                sink->ProcessSDLEvent(sdlEvent);
+            }
+        }
+
         switch (sdlEvent.type) {
             case SDL_EVENT_QUIT:
                 events.push_back(AppQuitRequestedEvent{});
@@ -20,6 +26,10 @@ std::vector<PlatformEvent> SDLEventPump::PollEvents() {
     }
 
     return events;
+}
+
+void SDLEventPump::AddEventSink(ISDLEventSink* sink) {
+    eventSinks.push_back(sink);
 }
 
 }

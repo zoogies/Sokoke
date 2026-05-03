@@ -1,6 +1,7 @@
 #pragma once
 
-#include <Core/IBackend.hpp>
+#include <Core/Backend/IBackend.hpp>
+#include <Core/Backend/IGPUBackend.hpp>
 #include <Core/Entities/Scene.hpp>
 #include <Core/Messaging/CommandQueue.hpp>
 #include <Core/Messaging/EventPump.hpp>
@@ -13,7 +14,7 @@ public:
     SokokeEngine() = default;
     ~SokokeEngine() = default;
 
-    void Initialize(IPlatformBackend *backend);
+    void Initialize(IPlatformBackend *backend, IGPUBackend *gpu_backend);
 
     void Tick();
 
@@ -29,6 +30,7 @@ private:
 
     bool running = false;
     IPlatformBackend* backend = nullptr;
+    IGPUBackend* gpu_backend = nullptr;
     EventRouter eventRouter;
     CommandQueue commandQueue;
 };
