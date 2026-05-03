@@ -46,6 +46,7 @@ jobs:
               - vcpkg-configuration.json
               - cmake/**
               - Engine/**
+              - Editor/**
               - Samples/**
               - extern/**
 
