@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Core/IBackend.hpp>
+#include <Core/Entities/Scene.hpp>
 #include <Core/Messaging/CommandQueue.hpp>
 #include <Core/Messaging/EventPump.hpp>
 
@@ -22,6 +23,7 @@ public:
 
     void Execute(const QuitCommand& command);
 
+    Scene activeScene;
 private:
     bool HandlePlatformEvent(const PlatformEvent& event);
 

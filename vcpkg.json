@@ -2,6 +2,8 @@
     "name": "sokoke",
     "version": "0.0.0",
     "dependencies": [
-        "sdl3"
+        "sdl3",
+        "entt",
+        "glm"
     ]
 }

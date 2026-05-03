@@ -8,9 +8,19 @@ target_sources(sokoke_core
     PUBLIC
         Sokoke.hpp
         PlatformEvents.hpp
+        Entities/Entity.hpp
 )
 
 target_compile_features(sokoke_core
     PUBLIC
         cxx_std_23
+)
+
+find_package(EnTT CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+
+target_link_libraries(sokoke_core
+    PUBLIC # NOTE: should maybe be private
+        EnTT::EnTT
+        glm::glm
 )
